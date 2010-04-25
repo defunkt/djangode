@@ -10,6 +10,10 @@ function extname(path) {
     return index < 0 ? '' : path.substring(index);
 }
 
+exports.params = function(req) {
+  return querystring.parse( url.parse(req.url).query )
+}
+
 exports.serveFile = function(req, res, filename) {
     // TODO: Ensure security against directory traversal attacks
     var body, headers;
